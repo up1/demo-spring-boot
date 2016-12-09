@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>demo</groupId>
+        <artifactId>com.demo</artifactId>
+        <version>0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rest</artifactId>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <tomcat7-maven-plugin.path>/demo-api</tomcat7-maven-plugin.path>
+    </properties>
+
+    <build>
+        <finalName>${tomcat7-maven-plugin.path}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <!--<configuration>-->
+                    <!--&lt;!&ndash;<outputDirectory>${project.basedir}/target/war</outputDirectory>&ndash;&gt;-->
+                    <!--<outputDirectory>/Users/somkiat/data/research/docker/jboss/jboss-eap-6.4/standalone/deployments/</outputDirectory>-->
+                <!--</configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>${tomcat7-maven-plugin.path}</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
